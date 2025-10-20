@@ -19,13 +19,16 @@ export function isSongInPlaylist(playlist, song) {
  * @returns `undefined` if `numbers` is empty
  */
 export function isAllEven(numbers) {
+  // return undefined if the array is empty
+  if (numbers.length === 0) {
+    return undefined;
+  }
+
+  // Check each number to see if it's divisible by 2.
   for (const number of numbers) {
     if (number % 2 !== 0) {
       return false;
-    } else if (numbers.length === 0) {
-      return undefined;
     }
-    return true;
   }
   return true;
 }
