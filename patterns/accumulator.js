@@ -45,7 +45,16 @@ export function factorial(n) {
  * @returns `[]` if n is 0 or negative
  */
 export function buildNArray(n) {
-  // TODO
+  // Creates an empty array and checks each number if it's valid to add to the array.
+  const result = [];
+  if (typeof n !== "number") return null;
+  if (n <= 0) return result;
+
+  // Builds the array for positive n.
+  for (let i = 1; i <= n; i++) {
+    result.push(i);
+  }
+  return result;
 }
 
 /**
@@ -53,7 +62,11 @@ export function buildNArray(n) {
  * @returns {string} the longest string in `strings`
  */
 export function getLongestString(strings) {
-  // TODO
+  const stringLengths = [];
+
+  for (let i = 0; i < strings.length; i++) {
+    stringLengths.push(strings[i].length);
+  }
 }
 
 /**
@@ -61,7 +74,12 @@ export function getLongestString(strings) {
  * @returns {number} the number of students present
  */
 export function countPresent(attendance) {
-  // TODO
+  // Counts the number of students present.
+  let count = 0;
+  for (let i = 0; i < attendance.length; i++) {
+    if (attendance[i]) count++;
+  }
+  return count;
 }
 
 /**
@@ -75,5 +93,25 @@ export function countPresent(attendance) {
  * @returns `null` if `dna` is not a string
  */
 export function complementDNA(dna) {
-  // TODO
+  // Creates an object to map each nucleobase to its complement.
+  const complements = {
+    A: "T",
+    T: "A",
+    C: "G",
+    G: "C",
+  };
+
+  // Guard: Check if input is a string.
+  if (typeof dna !== "string") {
+    return null;
+  }
+
+  // Converts the srtring into an array to modify each character.
+  dna = dna.split("");
+  for (let i = 0; i < dna.length; i++) {
+    if (complements.hasOwnProperty(dna[i])) {
+      dna[i] = complements[dna[i]];
+    }
+  }
+  return dna.join("");
 }
