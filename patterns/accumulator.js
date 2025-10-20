@@ -10,6 +10,9 @@ export function sumToN(n) {
   let sum = 0;
   for (let i = 1; i <= n; i++) {
     sum += i;
+    if (n <= 0) {
+      return 0;
+    }
   }
   return sum;
 }
@@ -22,7 +25,17 @@ export function sumToN(n) {
  * @returns `1` if n is 0
  */
 export function factorial(n) {
-  // TODO
+  // Return NaN if n is not a number, undefined if n is negative, and 1 if n is 0
+  let product = 1;
+  if (typeof n !== "number") return NaN;
+  if (n < 0) return undefined;
+  if (n === 0) return 1;
+
+  // Calculates factorial for positive n
+  for (let i = 1; i <= n; i++) {
+    product *= i;
+  }
+  return product;
 }
 
 /**
