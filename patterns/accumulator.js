@@ -6,13 +6,13 @@
  */
 export function sumToN(n) {
   if (typeof n !== "number") return NaN;
+  if (n <= 0) {
+    return 0;
+  }
 
   let sum = 0;
   for (let i = 1; i <= n; i++) {
     sum += i;
-    if (n <= 0) {
-      return 0;
-    }
   }
   return sum;
 }
@@ -62,11 +62,18 @@ export function buildNArray(n) {
  * @returns {string} the longest string in `strings`
  */
 export function getLongestString(strings) {
-  const stringLengths = [];
-
-  for (let i = 0; i < strings.length; i++) {
-    stringLengths.push(strings[i].length);
+  if (strings.length === 0) {
+    return "";
   }
+
+  let longest = strings[0];
+
+  for (let i = 1; i < strings.length; i++) {
+    if (strings[i].length > longest.length) {
+      longest = strings[i];
+    }
+  }
+  return longest;
 }
 
 /**
